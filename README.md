@@ -76,10 +76,9 @@ sellers, and crawlers read every line.
 
 - **No custom domain.** Buying one and pointing it at the `artivy` repo would
   move that site to the domain root and change its URL structure from
-  `/artivy/pawdoku/...` to `/pawdoku/...`. Those URLs are hard-coded into
-  shipped apps (`pawdoku/lib/screens/home_screen.dart`,
-  `wordle/lib/models/game_config.dart`, `stacko/scripts/menu_ui.gd`) and PawDoku
-  is already live on Play, so a broken privacy-policy link is a compliance
-  problem, not a cosmetic one. If a domain is ever added, attach it to **this**
-  repo instead and verify the old links still resolve before relying on it.
+  `/artivy/<game>/...` to `/<game>/...`. Those URLs are hard-coded into shipped
+  apps, and one of them is already live on Play, so a broken privacy-policy link
+  is a compliance problem rather than a cosmetic one. If a domain is ever added,
+  attach it to **this** repo instead, and verify the old links still resolve
+  before relying on it.
 - No build step, no dependencies. GitHub Pages serves the files as they are.
