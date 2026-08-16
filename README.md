@@ -1,6 +1,18 @@
 # ndri-nr.github.io
 
-This repo exists for **one file**: `app-ads.txt`.
+This repo exists for the files that have to sit at the **domain root**, and for the
+same reason each time: the thing crawling for them ignores paths.
+
+| File | Who fetches it | For |
+|------|----------------|-----|
+| `app-ads.txt` | AdMob | the five Android apps |
+| `ads.txt` | AdSense | the browser games on the website |
+| `index.html` | AdSense | carries the site-verification tag |
+
+Two different files with near-identical contents, and neither substitutes for the
+other: `app-ads.txt` authorises inventory inside a mobile **app**, `ads.txt` does
+the same for a **website**. Deleting either because it looks like a duplicate of
+the other breaks one half of the advertising.
 
 ## Why it has to be its own repo
 
@@ -71,6 +83,36 @@ A new line is needed only when a genuinely different seller appears:
 
 Adding a line never invalidates the others — the file is a list of authorised
 sellers, and crawlers read every line.
+
+## ads.txt, and the AdSense side
+
+The browser versions of the games are served from `/artivy/<game>/play.html`, on
+this same domain. AdSense verifies a **domain**, not a path, so the account is set
+up against `ndri-nr.github.io` and everything it needs lives here:
+
+- `ads.txt` — one line, the same publisher ID as `app-ads.txt` because it is the
+  same Google payments profile:
+
+  ```
+  google.com, pub-8668013395284480, DIRECT, f08c47fec0942fa0
+  ```
+
+- the `adsbygoogle.js` tag in `index.html`, which is how Google confirms the site
+  is ours. It places no advert by itself.
+
+```bash
+curl -s https://ndri-nr.github.io/ads.txt
+```
+
+**Auto ads must stay off** while this is being set up. Auto ads inject placements
+wherever Google likes, and the pages that matter here are games: an advert landing
+next to a board that is swiped and dragged turns a missed swipe into an accidental
+click, and enough of those close a publisher account. Ad units on the game pages
+are to be placed by hand, in the slot `artivy/css/play.css` already reserves below
+the board.
+
+Ads also may not actually serve until each game's privacy page describes them —
+see the workspace `CLAUDE.md`. Verification is not permission to switch them on.
 
 ## Deliberately not here
 

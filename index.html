@@ -5,6 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Artivy</title>
+
+    <!--
+      AdSense site verification. The publisher id is the same one as app-ads.txt, which is the
+      same Google payments profile the Android apps bill through.
+
+      It belongs here rather than in the `artivy` repo for exactly the reason app-ads.txt does:
+      AdSense verifies a *domain*, and this is the only repo that can answer for the domain
+      root. `artivy` is a project site served at /artivy/ and can never be the root.
+
+      This tag alone does not place an advert. It is what lets Google confirm the site is ours,
+      and it is what Auto ads would attach to if Auto ads were switched on — which they must
+      not be while the game pages are unprepared for them. See ads.txt beside this file.
+    -->
+    <script async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8668013395284480"
+        crossorigin="anonymous"></script>
     <style>
         body {
             margin: 0;
