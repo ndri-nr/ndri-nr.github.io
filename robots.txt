@@ -1,0 +1,12 @@
+# The domain root is the only place a robots.txt is read from. `artivy` is a Pages
+# *project* site served at /artivy/, so a robots.txt committed there would exist and
+# never be fetched — the same reason app-ads.txt has to live in this repo.
+#
+# The sitemap it points at is deployed by the other repo. Naming it here is a
+# cross-submission, which is what makes a sitemap under /artivy/ authoritative for
+# URLs on this domain.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ndri-nr.github.io/artivy/sitemap.xml

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Artivy</title>
+    <title>Artivy — small puzzle games for Android and the browser</title>
+    <meta name="description" content="Artivy is an independent one-person studio making six puzzle games — PawDoku, Kata·Word, StackO!, 2048, Rekta and PourFect! — for Android and playable free in any browser.">
+    <link rel="canonical" href="https://ndri-nr.github.io/">
 
     <!--
       AdSense site verification. The publisher id is the same one as app-ads.txt, which is the
@@ -14,63 +16,233 @@
       AdSense verifies a *domain*, and this is the only repo that can answer for the domain
       root. `artivy` is a project site served at /artivy/ and can never be the root.
 
-      This tag alone does not place an advert. It is what lets Google confirm the site is ours,
-      and it is what Auto ads would attach to if Auto ads were switched on — which they must
-      not be while the game pages are unprepared for them. See ads.txt beside this file.
+      Auto ads must stay off. The game pages size their boards from a hand-declared chrome
+      constant, and an advert Google inserts wherever it likes would push a board off the
+      bottom of the screen with nothing in the layout able to see it coming.
     -->
     <meta name="google-adsense-account" content="ca-pub-8668013395284480">
     <script async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8668013395284480"
         crossorigin="anonymous"></script>
+
+    <!--
+      Self-contained on purpose. This page lives in a different repo from the rest of the site
+      — it is the only one that can answer for the domain root — and importing a stylesheet
+      across the two would tie a deploy here to a deploy there.
+    -->
     <style>
+        :root {
+            --ink: #3d3d3a;
+            --muted: #6b6b66;
+            --rule: #e6e3da;
+            --link: #c15f3c;
+            --card: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
             margin: 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: #faf9f5;
-            color: #3d3d3a;
+            color: var(--ink);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.7;
+            font-size: 17px;
         }
 
-        main {
-            text-align: center;
-            padding: 2rem;
+        .wrap {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 56px 24px 80px;
         }
+
+        header { border-bottom: 1px solid var(--rule); padding-bottom: 28px; margin-bottom: 34px; }
 
         h1 {
-            margin: 0 0 .5rem;
-            font-size: 1.75rem;
+            margin: 0 0 .3rem;
+            font-size: 2.1rem;
             letter-spacing: -.02em;
         }
 
-        p {
-            margin: 0 0 1.5rem;
-            color: #6b6b66;
+        .tagline { margin: 0; color: var(--muted); font-size: 1.1rem; }
+
+        h2 {
+            font-size: 1.35rem;
+            letter-spacing: -.01em;
+            margin: 44px 0 12px;
         }
 
-        a {
-            color: #c15f3c;
-            font-weight: 600;
-            text-decoration: none;
+        h3 { font-size: 1.05rem; margin: 26px 0 8px; }
+
+        p, li { color: var(--ink); }
+
+        p { margin: 0 0 16px; }
+
+        a { color: var(--link); font-weight: 600; text-decoration: none; }
+
+        a:hover { text-decoration: underline; }
+
+        .cta {
+            display: inline-block;
+            background: var(--link);
+            color: #fff;
+            padding: 13px 26px;
+            border-radius: 8px;
+            font-weight: 700;
+            margin: 6px 0 4px;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .cta:hover { background: #a94f30; text-decoration: none; }
+
+        .games { list-style: none; margin: 0; padding: 0; }
+
+        .games li {
+            background: var(--card);
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+        }
+
+        .games h3 { margin: 0 0 4px; font-size: 1.1rem; }
+
+        .games p { margin: 0 0 10px; color: var(--muted); }
+
+        .games .row { font-size: .93rem; font-weight: 600; }
+
+        .games .row a + a::before {
+            content: "·";
+            color: var(--rule);
+            margin: 0 8px;
+            font-weight: 400;
+        }
+
+        ul.plain { padding-left: 20px; }
+
+        ul.plain li { margin-bottom: 8px; }
+
+        footer {
+            border-top: 1px solid var(--rule);
+            margin-top: 50px;
+            padding-top: 22px;
+            color: var(--muted);
+            font-size: .93rem;
+        }
+
+        footer a { font-weight: 600; }
+
+        footer .links a + a::before {
+            content: "·";
+            color: var(--rule);
+            margin: 0 8px;
+            font-weight: 400;
+        }
+
+        .ad { margin: 40px 0 0; }
+
+        @media (max-width: 600px) {
+            body { font-size: 16px; }
+            .wrap { padding: 36px 18px 60px; }
+            h1 { font-size: 1.7rem; }
         }
     </style>
 </head>
 
 <body>
-    <!-- This page exists only so the domain root is not a bare 404. The real
-         publisher site is the `artivy` project repo, served at /artivy/, and its
-         URLs are hard-coded into shipped apps — so it is linked, never moved. -->
-    <main>
-        <h1>Artivy</h1>
-        <p>Small games, made carefully.</p>
-        <a href="/artivy/">Visit the site &rarr;</a>
-    </main>
+    <div class="wrap">
+        <header>
+            <h1>Artivy</h1>
+            <p class="tagline">Small puzzle games, made carefully. Android and browser, free to play.</p>
+        </header>
+
+        <main>
+            <p>Artivy is an independent, one-person game studio in Indonesia. It makes six puzzle games, and every one of them exists twice: as an app on Google Play, and as a browser version you can play right now without installing anything or making an account.</p>
+
+            <p><a class="cta" href="/artivy/">Play the games &rarr;</a></p>
+
+            <h2>The six games</h2>
+
+            <ul class="games">
+                <li>
+                    <h3>PawDoku</h3>
+                    <p>Place one cat per row, per column and per coloured region, with no two touching — diagonals included. Every board is proved to have exactly one solution before you see it. Getting a cat wrong costs a life on the spot.</p>
+                    <p class="row"><a href="/artivy/pawdoku/play.html">Play</a><a href="/artivy/pawdoku/index.html">Rules &amp; tips</a></p>
+                </li>
+                <li>
+                    <h3>Kata·Word</h3>
+                    <p>Guess the hidden word in six attempts, at four, five or six letters, in English or Bahasa Indonesia. Two real word lists rather than one translated, each filtered by hand so every answer is a word you can be expected to know.</p>
+                    <p class="row"><a href="/artivy/kata_word/play.html">Play</a><a href="/artivy/kata_word/index.html">Rules &amp; tips</a></p>
+                </li>
+                <li>
+                    <h3>StackO!</h3>
+                    <p>Drop a sliding slab onto the tower. Whatever overhangs is sliced off, so every imperfect drop leaves you narrower — and only a dead-centre landing wins width back. Pure timing, and a speed that stops climbing so it stays readable.</p>
+                    <p class="row"><a href="/artivy/stacko/play.html">Play</a><a href="/artivy/stacko/index.html">Rules &amp; tips</a></p>
+                </li>
+                <li>
+                    <h3>2048</h3>
+                    <p>The sliding-tile classic: swipe, equal neighbours merge and double. No cap at 2048 — the run simply continues to 4096 and beyond — plus undo and a personal best.</p>
+                    <p class="row"><a href="/artivy/2048/play.html">Play</a><a href="/artivy/2048/index.html">Rules &amp; tips</a></p>
+                </li>
+                <li>
+                    <h3>Rekta</h3>
+                    <p>Shikaku, the Japanese pencil puzzle: cut the grid into rectangles so each holds exactly one clue and covers exactly that many cells. Three grid sizes, endless levels, and never a need to guess.</p>
+                    <p class="row"><a href="/artivy/rekta/play.html">Play</a><a href="/artivy/rekta/index.html">Rules &amp; tips</a></p>
+                </li>
+                <li>
+                    <h3>PourFect!</h3>
+                    <p>Sort coloured liquid between bottles until each one is empty or filled with a single colour. A solver checks every board before it is dealt, and the tall collector tube only ever takes liquid in.</p>
+                    <p class="row"><a href="/artivy/pourfect/play.html">Play</a><a href="/artivy/pourfect/index.html">Rules &amp; tips</a></p>
+                </li>
+            </ul>
+
+            <h2>How they are made</h2>
+
+            <p>Four of the six generate their own puzzles rather than shipping a fixed list of levels, which is why the levels never run out. That only works if the generator can be trusted, so generation is only half the job — PawDoku searches each board for a <em>second</em> solution and discards it if one exists, and PourFect! runs a solver over every board and deals another if the solver cannot finish it. The level you are handed has been proved solvable before it reaches you.</p>
+
+            <p>This matters more than it sounds. In a logic puzzle with two valid solutions, a player can reason perfectly, arrive somewhere entirely consistent, and be told they are wrong — with no way to know whose fault it was. A puzzle has to be trustworthy before it can be enjoyable.</p>
+
+            <p>The browser versions are not ports of the apps. The rules of each game were rewritten from scratch in JavaScript, because the Android builds are written in Dart, Java and GDScript and none of that runs in a browser. Six games therefore mean six independent implementations — more work than a port, and worth it because a change to the website should never be able to break a game that is live on Google Play.</p>
+
+            <h2>What these games do not have</h2>
+
+            <ul class="plain">
+                <li><strong>No in-app purchases.</strong> Not one, in any of the six, on Google Play or here. No real-money currency, no loot box, no energy meter that refills while you wait.</li>
+                <li><strong>No accounts.</strong> Nothing to sign into, so there is no profile of you anywhere and nothing to recover.</li>
+                <li><strong>No server.</strong> The games run entirely on your device. Progress in the browser versions is stored by your own browser and never uploaded.</li>
+                <li><strong>Offline.</strong> The apps work with no connection at all; the browser versions work once the page has loaded.</li>
+            </ul>
+
+            <p>The apps and the site both carry advertising — Google AdMob in the apps, Google AdSense here. Where an app offers something in exchange for watching an advert, it asks first and names the reward before any video plays. The browser versions have no rewarded adverts at all.</p>
+
+            <h2>Privacy, in one paragraph</h2>
+
+            <p>The browser games store your progress on your own device and nowhere else. There is no analytics and no crash reporting on the website. The Android apps do differ, and they differ from one another — some carry crash reporting only, some add analytics — which is why each app has its own policy naming what that specific app collects, rather than one shared boilerplate. The full detail is on the <a href="/artivy/privacy.html">website privacy policy</a> and each game's own page.</p>
+
+            <h2>More</h2>
+
+            <p><a href="/artivy/about.html">About the studio</a> — how the games are built, what is deliberately left out, and the whole list of policies. <a href="/artivy/contact.html">Contact</a> — bug reports, questions, and data requests, answered by the person who wrote the game.</p>
+
+            <!-- Content first, advert last: nothing above is sized from a constant, so an
+                 auto-format unit is free to take whatever shape pays, and after the prose it
+                 cannot come between a reader and the games. -->
+            <div class="ad">
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-8668013395284480"
+                     data-ad-slot="3384227680"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+            </div>
+        </main>
+
+        <footer>
+            <p class="links">
+                <a href="/artivy/">Games</a><a href="/artivy/about.html">About</a><a href="/artivy/contact.html">Contact</a><a href="/artivy/privacy.html">Privacy</a>
+            </p>
+            <p>&copy; 2026 Artivy. Published on Google Play under the Artivy name.</p>
+        </footer>
+    </div>
 </body>
 
 </html>
