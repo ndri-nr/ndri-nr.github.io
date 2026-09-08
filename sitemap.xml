@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  This repo serves the domain root and nothing else — one page. The games, their guides and
+  the policies live in the `artivy` repo, served at /artivy/, and they have their own sitemap
+  in that directory.
+
+  Two sitemaps rather than one because a sitemap is only unambiguously authoritative for URLs
+  inside its own directory. robots.txt beside this file names both.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://ndri-nr.github.io/</loc>
+        <lastmod>2026-09-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>1.0</priority>
+    </url>
+</urlset>

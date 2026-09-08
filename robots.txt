@@ -2,11 +2,13 @@
 # *project* site served at /artivy/, so a robots.txt committed there would exist and
 # never be fetched — the same reason app-ads.txt has to live in this repo.
 #
-# The sitemap it points at is deployed by the other repo. Naming it here is a
-# cross-submission, which is what makes a sitemap under /artivy/ authoritative for
-# URLs on this domain.
+# Two sitemaps, one per repo, each covering only its own directory: this repo serves
+# the single page at the root, and the `artivy` repo serves everything under /artivy/.
+# A sitemap is only unambiguously authoritative for URLs inside its own path, so they
+# are kept separate rather than one cross-submitting the other's URLs.
 
 User-agent: *
 Allow: /
 
+Sitemap: https://ndri-nr.github.io/sitemap.xml
 Sitemap: https://ndri-nr.github.io/artivy/sitemap.xml
