@@ -46,7 +46,18 @@
             --ink: #3d3d3a;
             --muted: #6b6b66;
             --rule: #e6e3da;
-            --link: #c15f3c;
+            /*
+             * Darkened from #c15f3c, which failed contrast everywhere it was used: 4.23:1 as
+             * link text on a white card, 4.01:1 on the page's own #faf9f5, and 4.23:1 again
+             * as the white label on the .cta that fills with it — all under the 4.5 that
+             * 16px text needs. The page background is the harder of the two grounds, not the
+             * card: a dark colour has *less* contrast against #faf9f5 than against #fff.
+             *
+             * #b35838 keeps the hue and clears all three — 4.56 on the page, 4.80 on a card,
+             * 4.80 for white on top. The hover stays #a94f30, still darker than this so the
+             * press reads, and 5.46 for its label.
+             */
+            --link: #b35838;
             --card: #ffffff;
         }
 
