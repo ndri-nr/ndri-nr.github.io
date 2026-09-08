@@ -9,6 +9,17 @@
     <link rel="canonical" href="https://ndri-nr.github.io/">
 
     <!--
+      Search Console site verification. It has to be served from the URL prefix being
+      verified, and the prefix is the domain root — the same reason app-ads.txt and
+      robots.txt are in this repo rather than in `artivy`. One root property covers every
+      path beneath it, /artivy/ included, so there is no second tag to place over there.
+
+      Do not remove it after verifying. Google re-checks periodically and unverifies the
+      property when the tag goes missing, which silently stops sitemap reporting.
+    -->
+    <meta name="google-site-verification" content="zQvlg84bMiQPEFqbUHMI7auttbgv3z5GhlVq_wRKs68">
+
+    <!--
       AdSense site verification. The publisher id is the same one as app-ads.txt, which is the
       same Google payments profile the Android apps bill through.
 
